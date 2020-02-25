@@ -20,6 +20,8 @@ func (service *ShowVideoService) Show(id string) serializer.Response {
 			Error: err.Error(),
 		}
 	}
+	//观看数
+	video.AddView()
 	return serializer.Response{
 		Data: serializer.BuildVideo(video),
 	}

@@ -7,15 +7,19 @@ import (
 
 //CreatVideoService 视频投稿服务
 type CreatVideoService struct {
-	Title string `json:"title,omitempty"`
-	Info  string `json:"info,omitempty"`
+	Title  string `json:"title,omitempty"`
+	Info   string `json:"info,omitempty"`
+	URL    string `json:"url,omitempty"`
+	Avatar string `json:"avatar,omitempty"`
 }
 
 // Creat 视频创建函数
 func (service *CreatVideoService) Creat() serializer.Response {
 	video := model.Video{
-		Title: service.Title,
-		Info:  service.Info,
+		Title:  service.Title,
+		Info:   service.Info,
+		URL:    service.URL,
+		Avatar: service.Avatar,
 	}
 	err := model.DB.Create(&video).Error
 	if err != nil {

@@ -4,10 +4,13 @@ import "focc/model"
 
 // Video 视频序列化器
 type Video struct {
-	ID        uint   `json:"id"`
-	Title     string `json:"title"`
-	Info      string `json:"info"`
-	CreatedAt int64  `json:"created_at"`
+	ID        uint   `json:"id,omitempty"`
+	Title     string `json:"title,omitempty"`
+	Info      string `json:"info,omitempty"`
+	URL       string `json:"url,omitempty"`
+	Avatar    string `json:"avatar,omitempty"`
+	View      uint64 `json:"view"`
+	CreatedAt int64  `json:"created_at,omitempty"`
 }
 
 // BuildVideo 序列化视频
@@ -16,6 +19,9 @@ func BuildVideo(item model.Video) Video {
 		ID:        item.ID,
 		Title:     item.Title,
 		Info:      item.Info,
+		URL:       item.URL,
+		Avatar:    item.AvatarURL(),
+		View:      item.View(),
 		CreatedAt: item.CreatedAt.Unix(),
 	}
 }

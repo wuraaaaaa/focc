@@ -25,7 +25,9 @@ func NewRouter() *gin.Engine {
 		v1.GET("list", api.ListVideo)
 		v1.PUT("video/:id", api.UpdateVideo)
 		v1.GET("videodel/:id", api.DeleteVideo)
+		v1.POST("upload/token", api.UploadToken)
 		v1.POST("ping", api.Ping)
+		v1.GET("rank/daily", api.DailyRank)
 
 		// 用户登录
 		v1.POST("user/register", api.UserRegister)
